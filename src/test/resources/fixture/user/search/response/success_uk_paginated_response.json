@@ -1,0 +1,60 @@
+{
+  "content": [
+    {
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "email": "homer.simpson@example.com",
+      "first_name": "Homer",
+      "id": "b9f2c693-12db-4df3-bb50-205e67e45d18",
+      "last_name": "Simpson",
+      "nickname": "hommersimpson",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "email": "james.smith@example.com",
+      "first_name": "James",
+      "id": "6a1b7e41-df3b-4f43-a417-1955b2afe8a0",
+      "last_name": "Smith",
+      "nickname": "jamessmith",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "email": "mary.jones@example.com",
+      "first_name": "Mary",
+      "id": "f8e8b15a-a35b-4b1a-8c6c-54a8a8e3f4d2",
+      "last_name": "Jones",
+      "nickname": "maryjones",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "email": "robert.williams@example.com",
+      "first_name": "Robert",
+      "id": "a3b1c8f8-3e4d-4c3d-b2a1-8e9d3b4c2a1b",
+      "last_name": "Williams",
+      "nickname": "robertwilliams",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "email": "patricia.brown@example.com",
+      "first_name": "Patricia",
+      "id": "b4c2d909-4f5e-5d4e-c3b2-9f0e4c5d3b2c",
+      "last_name": "Brown",
+      "nickname": "patriciabrown",
+      "updated_at": "${json-unit.any-string}"
+    }
+  ],
+  "page": {
+    "number": 0,
+    "size": 5,
+    "totalElements": 9,
+    "totalPages": 2
+  }
+}

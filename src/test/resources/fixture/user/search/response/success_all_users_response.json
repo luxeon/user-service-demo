@@ -1,0 +1,110 @@
+{
+  "content": [
+    {
+      "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      "first_name": "John",
+      "last_name": "Doe",
+      "nickname": "johndoe",
+      "email": "john.doe@example.com",
+      "country": "US",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "b9f2c693-12db-4df3-bb50-205e67e45d18",
+      "first_name": "Homer",
+      "last_name": "Simpson",
+      "nickname": "hommersimpson",
+      "email": "homer.simpson@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "6a1b7e41-df3b-4f43-a417-1955b2afe8a0",
+      "first_name": "James",
+      "last_name": "Smith",
+      "nickname": "jamessmith",
+      "email": "james.smith@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "f8e8b15a-a35b-4b1a-8c6c-54a8a8e3f4d2",
+      "first_name": "Mary",
+      "last_name": "Jones",
+      "nickname": "maryjones",
+      "email": "mary.jones@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "a3b1c8f8-3e4d-4c3d-b2a1-8e9d3b4c2a1b",
+      "first_name": "Robert",
+      "last_name": "Williams",
+      "nickname": "robertwilliams",
+      "email": "robert.williams@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "b4c2d909-4f5e-5d4e-c3b2-9f0e4c5d3b2c",
+      "first_name": "Patricia",
+      "last_name": "Brown",
+      "nickname": "patriciabrown",
+      "email": "patricia.brown@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "c5d3ea10-506f-6e5f-d4c3-001f5d6e4c3d",
+      "first_name": "Michael",
+      "last_name": "Taylor",
+      "nickname": "michaeltaylor",
+      "email": "michael.taylor@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "d6e4fb21-6170-7f60-e5d4-11206e7f5d4e",
+      "first_name": "Linda",
+      "last_name": "Davies",
+      "nickname": "lindadavies",
+      "email": "linda.davies@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "e7f50c32-7281-8071-f6e5-22317f806e5f",
+      "first_name": "David",
+      "last_name": "Wilson",
+      "nickname": "davidwilson",
+      "email": "david.wilson@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    },
+    {
+      "id": "f8061d43-8392-9182-07f6-334280917f60",
+      "first_name": "Elizabeth",
+      "last_name": "Evans",
+      "nickname": "elizabethevans",
+      "email": "elizabeth.evans@example.com",
+      "country": "UK",
+      "created_at": "${json-unit.any-string}",
+      "updated_at": "${json-unit.any-string}"
+    }
+  ],
+  "page": {
+    "size": 20,
+    "number": 0,
+    "totalElements": 10,
+    "totalPages": 1
+  }
+}

@@ -4,6 +4,32 @@ info:
   version: 1.0.0
 paths:
   /api/users:
+    get:
+      summary: Search for users
+      description: Returns a paginated list of users, optionally filtered by country.
+      operationId: search
+      tags:
+        - User
+      x-spring-paginated: true
+      parameters:
+        - name: country
+          in: query
+          required: false
+          description: Country to filter users by (ISO 3166-1 alpha-2 format).
+          schema:
+            type: string
+            example: 'UK'
+            minLength: 2
+            maxLength: 2
+      responses:
+        '200':
+          description: A paginated list of users.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPageResponse'
+        '400':
+          description: Invalid input provided
     post:
       summary: Create a new user
       operationId: create
@@ -82,6 +108,33 @@ paths:
 
 components:
   schemas:
+
+    PageMetadata:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int64
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+
+    UserPageResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        page:
+          $ref: '#/components/schemas/PageMetadata'
+
     UserCreateRequest:
       type: object
       properties:

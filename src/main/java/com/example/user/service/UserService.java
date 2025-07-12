@@ -5,9 +5,12 @@ import com.example.user.exception.UserAlreadyExistsException;
 import com.example.user.exception.UserNotFoundException;
 import com.example.user.mapper.UserMapper;
 import com.example.user.repository.UserRepository;
+import com.example.user.repository.specification.UserSpecification;
 import com.example.user.rest.dto.UserCreateRequestDto;
 import com.example.user.rest.dto.UserUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
@@ -51,5 +54,10 @@ public class UserService {
             throw new UserNotFoundException("User not found with id: " + id);
         }
         userRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<User> search(String country, Pageable pageable) {
+        return userRepository.findAll(UserSpecification.search(country), pageable);
     }
 } 

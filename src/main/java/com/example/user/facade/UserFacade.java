@@ -3,10 +3,13 @@ package com.example.user.facade;
 import com.example.user.domain.User;
 import com.example.user.mapper.UserMapper;
 import com.example.user.rest.dto.UserCreateRequestDto;
+import com.example.user.rest.dto.UserPageResponseDto;
 import com.example.user.rest.dto.UserResponseDto;
 import com.example.user.rest.dto.UserUpdateRequestDto;
 import com.example.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -30,5 +33,10 @@ public class UserFacade {
 
     public void delete(UUID id) {
         userService.delete(id);
+    }
+
+    public UserPageResponseDto search(String country, Pageable pageable) {
+        Page<User> page = userService.search(country, pageable);
+        return userMapper.toUserPageResponseDto(page);
     }
 } 

@@ -65,6 +65,39 @@ The application is structured into the following layers:
 
 *   **Repository Layer (`@Repository`)**: The data access layer, responsible for all communication with the database. It uses Spring Data JPA to provide an abstraction over database interactions.
 
+## Configuration Management
+
+The application's configuration is managed through YAML files located in `src/main/resources/`.
+
+*   **`application.yml`**: Contains the base configuration for all environments.
+*   **`application-local.yml`**: Provides environment-specific overrides for local development. It is activated by the `local` Spring profile and includes settings like the database connection details for the local Docker container.
+
+## Database Migrations
+
+Database schema changes are managed using [Flyway](https://flywaydb.org/).
+
+*   Migration scripts are located in `src/main/resources/db/migration/`.
+*   Each script is versioned (e.g., `V1__...`, `V2__...`).
+*   Flyway automatically applies pending migrations on application startup, ensuring the database schema is always up-to-date.
+
+## Testing
+
+The project has a comprehensive testing strategy focused on integration testing the API layer.
+
+### Integration Testing
+
+Integration tests are located in `src/test/java/` and use the custom `@IntegrationTest` annotation, which configures the Spring TestContext framework.
+
+Key features of the testing setup include:
+
+*   **Testcontainers**: For database tests, [Testcontainers](https://www.testcontainers.org/) is used to spin up a PostgreSQL container on-the-fly. This ensures that tests run against a clean, consistent, and isolated database instance every time. The configuration can be found in `TestcontainersConfiguration.java`.
+
+*   **MockMvc**: The Spring MockMvc framework is used to perform requests to the REST controllers and validate responses without needing to run a full HTTP server.
+
+*   **Test Data Management**:
+    *   **SQL Scripts**: Test data is managed using SQL scripts located in `src/test/resources/db/`. The `@Sql` annotation is used in test methods to insert data before a test runs and clean it up afterward.
+    *   **JSON Fixtures**: Request and response payloads for MockMvc tests are stored as JSON files in `src/test/resources/fixture/`. This keeps the test code clean and separates test data from test logic. Expected responses are compared against these fixture files.
+
 ## Assumptions
 
 ### Password Hashing

@@ -26,6 +26,13 @@ To run this application locally, you will need Docker and Java 21.
 
     Alternatively, you can configure your IDE to use the `local` profile when running the application.
 
+## Key Endpoints
+
+Once the application is running, some of the useful endpoints available are:
+
+*   **Health Check**: `/actuator/health`
+*   **Swagger UI**: `/swagger-ui/index.html`
+
 ---
 
 ## OpenAPI Code Generation

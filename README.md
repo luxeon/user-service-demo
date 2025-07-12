@@ -2,6 +2,32 @@
 
 This project is a Spring Boot application for managing users.
 
+## How to Run Locally
+
+To run this application locally, you will need Docker and Java 21.
+
+1.  **Start the database**
+
+    The project uses PostgreSQL, which can be started easily with the provided `docker-compose.yml` in the `local` directory.
+
+    ```bash
+    cd local
+    docker-compose up -d
+    ```
+
+2.  **Run the application**
+
+    The application uses the `local` Spring profile to connect to the Dockerized database. Run the application with this profile active.
+
+    From the command line using Maven:
+    ```bash
+    ./mvnw spring-boot:run -Dspring-boot.run.profiles=local
+    ```
+
+    Alternatively, you can configure your IDE to use the `local` profile when running the application.
+
+---
+
 ## OpenAPI Code Generation
 
 This project uses the `openapi-generator-maven-plugin` to generate Spring Boot controller interfaces and Data Transfer Objects (DTOs) from an OpenAPI specification file.

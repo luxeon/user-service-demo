@@ -27,6 +27,38 @@ paths:
           description: Invalid input provided
         '409':
           description: User with the provided email or nickname already exists
+  /api/users/{id}:
+    put:
+      summary: Update an existing user
+      operationId: update
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of user to update
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: User update request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Invalid input provided
+        '404':
+          description: User not found
 
 components:
   schemas:
@@ -36,16 +68,23 @@ components:
         first_name:
           type: string
           example: 'Alice'
+          minLength: 1
+          maxLength: 255
         last_name:
           type: string
           example: 'Bob'
+          minLength: 1
+          maxLength: 255
         nickname:
           type: string
           example: 'AB123'
+          minLength: 1
+          maxLength: 255
         password:
           type: string
           format: password
           example: 'supersecurepassword'
+          minLength: 10
         email:
           type: string
           format: email
@@ -54,12 +93,37 @@ components:
         country:
           type: string
           example: 'UK'
+          minLength: 2
+          maxLength: 2
       required:
         - first_name
         - last_name
         - nickname
         - password
         - email
+        - country
+
+    UserUpdateRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: 'John'
+          minLength: 1
+          maxLength: 255
+        last_name:
+          type: string
+          example: 'Doe'
+          minLength: 1
+          maxLength: 255
+        country:
+          type: string
+          example: 'USA'
+          minLength: 2
+          maxLength: 2
+      required:
+        - first_name
+        - last_name
         - country
 
     UserResponse:

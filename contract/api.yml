@@ -59,6 +59,26 @@ paths:
           description: Invalid input provided
         '404':
           description: User not found
+        '409':
+          description: User with the provided email or nickname already exists
+    delete:
+      summary: Delete a user by ID
+      operationId: deleteById
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the user to delete
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
 
 components:
   schemas:

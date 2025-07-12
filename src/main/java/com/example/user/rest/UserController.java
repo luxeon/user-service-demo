@@ -24,4 +24,9 @@ public class UserController implements UserApi {
     public UserResponseDto update(UUID id, UserUpdateRequestDto userUpdateRequestDto) {
         return userFacade.update(id, userUpdateRequestDto);
     }
+
+    @Override
+    public void deleteById(UUID id) {
+        userFacade.delete(id);
+    }
 } 

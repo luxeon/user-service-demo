@@ -27,4 +27,8 @@ public class UserFacade {
         User updatedUser = userService.update(id, userUpdateRequestDto);
         return userMapper.toUserResponseDto(updatedUser);
     }
+
+    public void delete(UUID id) {
+        userService.delete(id);
+    }
 } 

@@ -44,4 +44,12 @@ public class UserService {
         userMapper.updateUserFromDto(userUpdateRequestDto, user);
         return userRepository.save(user);
     }
+
+    @Transactional
+    public void delete(UUID id) {
+        if (!userRepository.existsById(id)) {
+            throw new UserNotFoundException("User not found with id: " + id);
+        }
+        userRepository.deleteById(id);
+    }
 } 

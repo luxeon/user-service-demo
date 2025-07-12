@@ -1,0 +1,2 @@
+INSERT INTO users (id, first_name, last_name, nickname, email, password, country, created_at, updated_at)
+VALUES ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'John', 'Doe', 'johndoe', 'john.doe@example.com', 'somepassword', 'US', now(), now()); 

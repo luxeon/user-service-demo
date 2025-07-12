@@ -1,0 +1,8 @@
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "nickname": "johndoe",
+  "password": "password123",
+  "email": "invalid-email",
+  "country": "US"
+} 

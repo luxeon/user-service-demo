@@ -1,0 +1,10 @@
+{
+  "id": "${json-unit.any-string}",
+  "first_name": "John",
+  "last_name": "Doe",
+  "nickname": "johndoe",
+  "email": "john.doe@example.com",
+  "country": "US",
+  "created_at": "${json-unit.any-string}",
+  "updated_at": "${json-unit.any-string}"
+}

@@ -146,7 +146,6 @@
 								<dateLibrary>java8-localdatetime</dateLibrary>
 								<useResponseEntity>false</useResponseEntity>
 								<useSpringBoot3>true</useSpringBoot3>
-								<useRecords>true</useRecords>
 								<useTags>true</useTags>
 							</configOptions>
 						</configuration>

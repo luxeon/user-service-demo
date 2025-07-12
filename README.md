@@ -45,3 +45,7 @@ The error response structure has been simplified to accelerate development. For 
 ### User Deletion
 
 For simplicity, users are physically deleted from the database. In a real-world application, a soft-delete approach (e.g., using a `deleted` flag) is often preferred to preserve data history and integrity.
+
+### Search Endpoint
+
+To speed up development, the search endpoint was implemented with only a single parameter. This could be extended with additional parameters in the future to allow for more complex search queries.

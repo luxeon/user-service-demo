@@ -48,4 +48,33 @@ For simplicity, users are physically deleted from the database. In a real-world 
 
 ### Search Endpoint
 
-To speed up development, the search endpoint was implemented with only a single parameter. This could be extended with additional parameters in the future to allow for more complex search queries.
+To speed up development, a search endpoint has been implemented with a limited set of parameters. This can be extended in the future to support more complex filtering and sorting capabilities based on additional user attributes.
+
+### AMQP/Messaging Integration
+
+The `UserActivityListener` is designed to publish events to a message broker, but the actual AMQP message sending logic has been skipped for now. When this functionality is implemented, it must be thoroughly tested using Testcontainers to ensure the messaging integration works reliably without depending on a live message broker.
+
+## Event-Driven Mechanism for User Activities
+
+The application uses an event-driven mechanism to decouple business logic from side effects like sending notifications or updating other systems. This is primarily handled by two components: `UserHibernateListener` and `UserActivityListener`.
+
+### `UserHibernateListener`
+
+This class integrates with Hibernate's event system to listen for persistence events related to the `User` entity.
+
+- It implements `PostInsertEventListener`, `PostUpdateEventListener`, and `PostDeleteEventListener`.
+- When a user is created, updated, or deleted, the listener catches the corresponding Hibernate event.
+- It then publishes a custom Spring `ApplicationEvent` (`UserCreatedEvent`, `UserUpdatedEvent`, or `UserDeletedEvent`). This event is dispatched synchronously within the same transaction as the database operation.
+
+### `UserActivityListener`
+
+This component listens for the application events published by the `UserHibernateListener`. Its purpose is to perform actions in response to user data changes, such as sending messages to a message queue (e.g., RabbitMQ or Kafka) to notify other services.
+
+- It uses `@TransactionalEventListener` to subscribe to the custom user events.
+- The key aspect of this listener is the use of `phase = TransactionPhase.AFTER_COMMIT`. This configuration ensures that the event handling logic is executed only *after* the database transaction has successfully committed.
+
+#### Why `TransactionPhase.AFTER_COMMIT`?
+
+Using the `AFTER_COMMIT` phase is crucial for ensuring data consistency, especially in a microservices architecture. If we were to send a notification before the transaction is committed, the transaction could still fail and be rolled back. This would lead to a state where other services are notified of a change that never actually happened in the `user-service` database.
+
+By waiting for the transaction to commit, we guarantee that we are broadcasting a state that is permanently stored and consistent. This prevents race conditions and ensures the reliability of downstream processes that depend on this user data.

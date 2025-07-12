@@ -89,7 +89,6 @@ components:
           type: string
           format: email
           example: 'alice@bob.com'
-          x-field-extra-annotation: "@org.hibernate.validator.constraints.Email"
         country:
           type: string
           example: 'UK'
@@ -121,6 +120,15 @@ components:
           example: 'USA'
           minLength: 2
           maxLength: 2
+        nickname:
+          type: string
+          example: 'AB123'
+          minLength: 1
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          example: 'alice@bob.com'
       required:
         - first_name
         - last_name

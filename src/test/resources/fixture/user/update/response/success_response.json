@@ -2,8 +2,8 @@
   "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
   "first_name": "JohnUpdated",
   "last_name": "DoeUpdated",
-  "nickname": "johndoe",
-  "email": "john.doe@example.com",
+  "nickname": "johndoeUpdated",
+  "email": "john.doe.updated@example.com",
   "country": "UK",
   "created_at": "${json-unit.any-string}",
   "updated_at": "${json-unit.any-string}"

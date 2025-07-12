@@ -24,7 +24,5 @@ public interface UserMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "password", ignore = true)
-    @Mapping(target = "email", ignore = true)
-    @Mapping(target = "nickname", ignore = true)
     void updateUserFromDto(UserUpdateRequestDto userUpdateRequestDto, @MappingTarget User user);
 } 

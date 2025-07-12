@@ -37,6 +37,10 @@ public class UserService {
         var user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
 
+        if (userRepository.existsByEmailOrNickname(userUpdateRequestDto.getEmail(), userUpdateRequestDto.getNickname())) {
+            throw new UserAlreadyExistsException("User with the provided email or nickname already exists");
+        }
+
         userMapper.updateUserFromDto(userUpdateRequestDto, user);
         return userRepository.save(user);
     }

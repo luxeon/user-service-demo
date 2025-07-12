@@ -89,6 +89,40 @@ class UserControllerTest {
 
     @Test
     @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    void update_shouldReturn409_whenUserAlreadyExistsWithSuchEmail() throws Exception {
+        var request = readStringFromResource("fixture/user/update/request/email_conflict_request.json");
+        var expectedResponse = readStringFromResource("fixture/user/update/response/conflict_response.json");
+
+        var response = mockMvc.perform(put("/api/users/" + EXISTING_USER_ID)
+                        .contentType(APPLICATION_JSON)
+                        .content(request))
+                .andExpect(status().isConflict())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertThatJson(response).isEqualTo(expectedResponse);
+    }
+
+    @Test
+    @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    void update_shouldReturn409_whenUserAlreadyExistsWithSuchNickname() throws Exception {
+        var request = readStringFromResource("fixture/user/update/request/nickname_conflict_request.json");
+        var expectedResponse = readStringFromResource("fixture/user/update/response/conflict_response.json");
+
+        var response = mockMvc.perform(put("/api/users/" + EXISTING_USER_ID)
+                        .contentType(APPLICATION_JSON)
+                        .content(request))
+                .andExpect(status().isConflict())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertThatJson(response).isEqualTo(expectedResponse);
+    }
+
+    @Test
+    @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     void update_shouldReturn400_whenRequestIsInvalid() throws Exception {
         var request = readStringFromResource("fixture/user/update/request/bad_request.json");
         var expectedResponse = readStringFromResource("fixture/user/update/response/bad_request_response.json");

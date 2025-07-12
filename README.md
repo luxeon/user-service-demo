@@ -41,3 +41,7 @@ For the purpose of this project, a simple MD5 hashing mechanism has been impleme
 ### Error Handling
 
 The error response structure has been simplified to accelerate development. For a production environment, it is recommended to implement a more comprehensive error response strategy that includes unique error codes, detailed context, and links to documentation to improve client-side error handling and debugging.
+
+### User Deletion
+
+For simplicity, users are physically deleted from the database. In a real-world application, a soft-delete approach (e.g., using a `deleted` flag) is often preferred to preserve data history and integrity.

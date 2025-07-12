@@ -23,7 +23,6 @@ class UserControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    @Sql(scripts = "/db/users/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void create_shouldReturn201_whenRequestIsValid() throws Exception {
         var request = readStringFromResource("fixture/user/create/request/success_request.json");
         var expectedResponse = readStringFromResource("fixture/user/create/response/success_response.json");
@@ -57,7 +56,6 @@ class UserControllerTest {
 
     @Test
     @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "/db/users/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void create_shouldReturn409_whenUserAlreadyExists() throws Exception {
         var request = readStringFromResource("fixture/user/create/request/success_request.json");
         var expectedResponse = readStringFromResource("fixture/user/create/response/conflict_response.json");
@@ -75,7 +73,6 @@ class UserControllerTest {
 
     @Test
     @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "/db/users/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void update_shouldReturn200_whenRequestIsValid() throws Exception {
         var request = readStringFromResource("fixture/user/update/request/success_request.json");
         var expectedResponse = readStringFromResource("fixture/user/update/response/success_response.json");
@@ -93,7 +90,6 @@ class UserControllerTest {
 
     @Test
     @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "/db/users/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void update_shouldReturn409_whenUserAlreadyExistsWithSuchEmail() throws Exception {
         var request = readStringFromResource("fixture/user/update/request/email_conflict_request.json");
         var expectedResponse = readStringFromResource("fixture/user/update/response/conflict_response.json");
@@ -111,7 +107,6 @@ class UserControllerTest {
 
     @Test
     @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "/db/users/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void update_shouldReturn409_whenUserAlreadyExistsWithSuchNickname() throws Exception {
         var request = readStringFromResource("fixture/user/update/request/nickname_conflict_request.json");
         var expectedResponse = readStringFromResource("fixture/user/update/response/conflict_response.json");
@@ -129,7 +124,6 @@ class UserControllerTest {
 
     @Test
     @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "/db/users/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void update_shouldReturn400_whenRequestIsInvalid() throws Exception {
         var request = readStringFromResource("fixture/user/update/request/bad_request.json");
         var expectedResponse = readStringFromResource("fixture/user/update/response/bad_request_response.json");
@@ -157,7 +151,6 @@ class UserControllerTest {
 
     @Test
     @Sql(scripts = "/db/users/insert_user.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "/db/users/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     void delete_shouldReturn204_whenUserExists() throws Exception {
         mockMvc.perform(delete("/api/users/" + EXISTING_USER_ID))
                 .andExpect(status().isNoContent());
